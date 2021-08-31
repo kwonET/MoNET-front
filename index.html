@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <!--헤더 부분 - 메뉴 설정, 로고 등-->
+    <header>
+        <div id="line-above">
+            <h4 class="header-item">
+                MoNET Neural Simulator
+            </h4>
+            <nav class="header-item">
+                <ul class="nav__list">
+                    <li class="nav__list-item">
+                        <a href="" class="nav__link">Bilinear MMD</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-item">
+                <img src="images/menu.svg" alt="">
+            </div>
+        </div>
+        <div id="line">
+            <img src="images/line.svg" alt="">  
+        </div>
+    </header>
+
+    <!--메인 부분-->
+    <main id="main-body">
+        <div id="left-control-tab">
+            <div id="tab-parent">
+                <!--탭 설정 창-->
+                <div class="tabs">
+                    <div id="selected-tab">
+                        <span>EXPLANATION</span>
+                    </div>
+                    <div class="unselected-tab">
+                        <span>SETTING</span>
+                    </div>
+                    <div class="unselected-tab">
+                        <span>CODE</span>
+                    </div>
+                </div>
+                <div id="tab-border">
+                    <div class="tab-content">
+                        <!--간단한 설명 부분-->
+                        <div class="info-span-div">
+                            <div class="info-subtitle">
+                                <span class="first-subtitle">MODEL</span>
+                                <span class="dot">•</span>
+                                <span class="second-subtitle">INTRODUCTION</span>
+                            </div>
+                            <div class="info-title">
+                                Bilinear model Simulator in CaI and fMRI
+                            </div>
+                        </div>
+                        <div class="info-p">
+                            <p>
+                                A simple introduction that contains some guides and usages of bilnear model simulator (2-3 sentences) A simple
+                                introduction that contains some guides and usages of bilnear model simulator (2-3 sentences)
+                            </p>
+                        </div>
+                        <!--Model 설명 부분1-->
+                        <div class="modelsetting1">
+                            <div class="setting-title">
+                                State Model
+                            </div>
+                            <div class="setting-component">
+                                <span>Bilinear model for a state x is defined as below</span>
+                                <div class="expression">
+                                    <img src="images/num.svg" alt="" width= 161px height=25px>
+                                </div>
+                                <span>
+                                    where A is the intrinsic connectivity, B is the modulation connectivity by input
+                                    u, C assigns the input u to each node.
+                                </span>
+                                <div class="expression">
+                                    <img src="images/num2.svg" alt="" width=91px height=48px>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Model 설명 부분2-->
+                        <div class="modelsetting2">
+                            <div class="setting-title">
+                                Observation Model
+                            </div>
+                            <div class="setting-component">
+                                <span>the neural state x is used as input to calcium dynamics or hemodynamics
+                                </span>
+                                <div class="expression" width=80px height=59px>
+                                    <img src="images/num3.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <!--변수 설명 부분-->
+                        <div class="constantsetting">
+                            <div class="setting-title">
+                                Constants
+                            </div>
+                            <div class="setting-component">
+                                <div class="constant-graph">
+                                    <img src="images/const-frame.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--그래프 표시 부분-->
+        <div id="right-container">
+            <div class="graph-title">
+                <div class="bar">
+                    <img src="images/bar.svg" alt="">
+                </div>
+                <div id="graph-title">
+                    Result Graph
+                </div>
+            </div>
+            <div class="graph-images">
+                <div class="graph-name">U</div>
+                <img src="images/graph1.svg" alt="">
+            </div>
+            <div class="graph-images">
+                <div class="graph-name">X</div>
+                <img src="images/graph2.svg" alt="">
+            </div>
+            <div class="under-line">
+                <img src="images/line-lighter.svg" alt="">
+            </div>
+            <div class="references">
+                <div class="ref-container">
+                    <div class="ref-title">Reference</div>
+                    <div class="ref-link">Heitmann, Stewart, and G. Bard Ermentrout. "Direction-selective motion discrimination by traveling waves in visual
+                    cortex." PLoS Computational Biology 16.9 (2020): e1008164.</div>
+                </div>
+                <div class="ref-container">
+                    <div class="ref-title">Reference</div>
+                    <div class="ref-link">Heitmann, Stewart, and G. Bard Ermentrout. "Direction-selective motion discrimination by
+                        traveling waves in visual
+                        cortex." PLoS Computational Biology 16.9 (2020): e1008164.</div>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+</body>
+</html>
