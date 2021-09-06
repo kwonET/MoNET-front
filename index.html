@@ -1,159 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
+    <meta charset="utf-8">
+    <title>MoNET Neural Simulator</title>  
+    <script src="https://unpkg.com/mathjs@9.4.4/lib/browser/math.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>  
+
+    <script src="modules/uPlot.iife.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/colorbrewer.v1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
+    <link rel="stylesheet" href="modules/uPlot.min.css">
+    <link href="css/main.css" rel="stylesheet" type="text/css" >
+    <script src="js/init.js"></script>  
+    <script src="js/odesolve.js"></script>  
+    <script src="js/mfunctions.js"></script>
+    <script src="js/mparser.js"></script>    
+    <!-- <script src="js/mviz.js" type="module"></script> -->
+    <script src="js/main.js"></script>
+    <!-- 폰트 설정 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <title>Document</title>
-</head>
-<body>
-    <!--헤더 부분 - 메뉴 설정, 로고 등-->
-    <header>
-        <div id="line-above">
-            <h4 class="header-item">
-                MoNET Neural Simulator
-            </h4>
-            <nav class="header-item">
-                <ul class="nav__list">
-                    <li class="nav__list-item">
-                        <a href="" class="nav__link">Bilinear MMD</a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="header-item">
-                <img src="images/menu.svg" alt="">
-            </div>
-        </div>
-        <div id="line">
-            <img src="images/line.svg" alt="">  
-        </div>
-    </header>
 
-    <!--메인 부분-->
-    <main id="main-body">
-        <div id="left-control-tab">
-            <div id="tab-parent">
-                <!--탭 설정 창-->
-                <div class="tabs">
-                    <div id="selected-tab">
-                        <span>EXPLANATION</span>
-                    </div>
-                    <div class="unselected-tab">
-                        <span>SETTING</span>
-                    </div>
-                    <div class="unselected-tab">
-                        <span>CODE</span>
-                    </div>
-                </div>
-                <div id="tab-border">
-                    <div class="tab-content">
-                        <!--간단한 설명 부분-->
-                        <div class="info-span-div">
-                            <div class="info-subtitle">
-                                <span class="first-subtitle">MODEL</span>
-                                <span class="dot">•</span>
-                                <span class="second-subtitle">INTRODUCTION</span>
-                            </div>
-                            <div class="info-title">
-                                Bilinear model Simulator in CaI and fMRI
-                            </div>
-                        </div>
-                        <div class="info-p">
-                            <p>
-                                A simple introduction that contains some guides and usages of bilnear model simulator (2-3 sentences) A simple
-                                introduction that contains some guides and usages of bilnear model simulator (2-3 sentences)
-                            </p>
-                        </div>
-                        <!--Model 설명 부분1-->
-                        <div class="modelsetting1">
-                            <div class="setting-title">
-                                State Model
-                            </div>
-                            <div class="setting-component">
-                                <span>Bilinear model for a state x is defined as below</span>
-                                <div class="expression">
-                                    <img src="images/num.svg" alt="" width= 161px height=25px>
-                                </div>
-                                <span>
-                                    where A is the intrinsic connectivity, B is the modulation connectivity by input
-                                    u, C assigns the input u to each node.
-                                </span>
-                                <div class="expression">
-                                    <img src="images/num2.svg" alt="" width=91px height=48px>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Model 설명 부분2-->
-                        <div class="modelsetting2">
-                            <div class="setting-title">
-                                Observation Model
-                            </div>
-                            <div class="setting-component">
-                                <span>the neural state x is used as input to calcium dynamics or hemodynamics
-                                </span>
-                                <div class="expression" width=80px height=59px>
-                                    <img src="images/num3.svg" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <!--변수 설명 부분-->
-                        <div class="constantsetting">
-                            <div class="setting-title">
-                                Constants
-                            </div>
-                            <div class="setting-component">
-                                <div class="constant-graph">
-                                    <img src="images/const-frame.svg" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+<header>
+  <div id="line-above">
+    <h4 class="header-item">
+      MoNET Neural Simulator
+    </h4>
+    <!-- <nav class="header-item">
+      <ul class="nav__list">
+        <li class="nav__list-item">
+          <a href="" class="nav__link">Bilinear MMD</a>
+        </li>
+      </ul> 
+    </nav> -->
+    <!-- 메뉴 설정을 위한 창 -->
+    <div class="nav-links" style="display: flex; flex-direction: column;align-items: center;">
+      <div>
+        <!--model 설정-->
+        <label for="Model"></label> 
+        <!-- <select id="model" name="model" onchange="loadModel()"> -->
+        <!--option은 value에 따라 해당 모델이 설정됨.-->
+        <ul class="nav-links" id="model" name="model" onchange="loadModel()">
+          <li><a href="#" value="./models/bilinear_basic.m">Bilinear LFP</a></li>
+          <li><a href="#" value="./models/bilinear_mmd.m">Bilinear MMD</a></li>
+          <li><a href="#" value="./models/wilsoncowan_basic.m">Wilson-Cowan</a></li>
+          <li><a href="#" value="./models/mean_field_model_dm.m">Mean Field</a></li>
+          <li><a href="#" value="./models/jansen_rit_model_4.m">JanseRit</a></li>
+        </ul>
+        <!-- <option value="./models/bilinear_basic.m">Bilinear LFP</option>
+                <option value="./models/bilinear_mmd.m">Bilinear MMD</option>
+                <option value="./models/wilsoncowan_basic.m">Wilson-Cowan</option>
+                <option value="./models/mean_field_model_dm.m">Mean Field</option>
+                <option value="./models/jansen_rit_model_4.m">JanseRit</option> -->
+        <!-- </select> -->
+      </div>
+    </div>
+    <div class="burger">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+  </div>
+  <div id="line">
+    <img src="images/line.svg" alt="">
+  </div>
+</header>
+
+<body> 
+
+  <!--모델설정아래 전체workspace-->
+  <div id="workspace" style="display: flex;flex-direction:row;"> 
+    <!--왼쪽 설정창 simworld/configuration-->
+    <div id="simworld" style="display: flex; flex-direction:column;align-items:stretch;width:30%">
+      <div id="configuration" style="display: flex; flex-direction:column;align-items:stretch;justify-items: start;">  
+        <!--해당 설명, 상수, 변수 별 파트-->
+        <div class="info-subtitle">
+          <span>MODEL • INTRODUCTION</span>
         </div>
-        <!--그래프 표시 부분-->
-        <div id="right-container">
-            <div class="graph-title">
-                <div class="bar">
-                    <img src="images/bar.svg" alt="">
-                </div>
-                <div id="graph-title">
-                    Result Graph
-                </div>
-            </div>
-            <div class="graph-images">
-                <div class="graph-name">U</div>
-                <img src="images/graph1.svg" alt="">
-            </div>
-            <div class="graph-images">
-                <div class="graph-name">X</div>
-                <img src="images/graph2.svg" alt="">
-            </div>
-            <div class="under-line">
-                <img src="images/line-lighter.svg" alt="">
-            </div>
-            <div class="references">
-                <div class="ref-container">
-                    <div class="ref-title">Reference</div>
-                    <div class="ref-link">Heitmann, Stewart, and G. Bard Ermentrout. "Direction-selective motion discrimination by traveling waves in visual
-                    cortex." PLoS Computational Biology 16.9 (2020): e1008164.</div>
-                </div>
-                <div class="ref-container">
-                    <div class="ref-title">Reference</div>
-                    <div class="ref-link">Heitmann, Stewart, and G. Bard Ermentrout. "Direction-selective motion discrimination by
-                        traveling waves in visual
-                        cortex." PLoS Computational Biology 16.9 (2020): e1008164.</div>
-                </div>
-            </div>
-        </div>
-        
-    </main>
+        <div id="Headers" class='mathjax' style="display: flex; flex-direction:column;justify-items: start;"></div>
+        <div id="Equation" style="display: flex; flex-direction:column;justify-items: start;"></div>
+        <div id="Constants"><h4 id="Constantsmsg" style="visibility:hidden;">Constants</h4><div id="Constants1"></div></div>
+        <div id="Variables"><h4 id="Variablesmsg" style="visibility:hidden;">Variables</h4><div id="Variables1"></div></div>   
+      </div>
+      <div id="graphviz" style="display:flex; flex-direction:row;align-items:stretch;justify-items:center;width:100%;">  
+        <div id="Link"></div>
+        <div id="Matrix"></div>
+      </div>
+    </div>
+    <!--코드 창 editor-->
+    <div id='editor' style="display:flex;flex-direction:column;width:70%;align-items:stretch;justify-items: stretch;">
+      <!----그래프----->
+      <div id="plotviz" style="display:flex;flex-direction:column;align-items:stretch;width:100%;"></div>
+
+      <!-- 코드 -->
+      <!-- <label for="onlineeditlabel">Online Code:<br></label> -->
+      <!--코드 작성 area-->
+      <textarea id="onlineedit" name="onlineedit" rows="50" cols="50" style="display:none; align-self:stretch;"> </textarea>       
+      <!-- <input type="submit" id="onlineeditbutton" onclick="runCode(document.getElementById('onlineedit').value);">Run</input>  -->
+      <!--새로운 코드 작성 area-->
+      <!-- <input type="text" id="commandedit" name="commandedit" onchange="runCommand(document.getElementById('commandedit').value);">
+      <textarea id="commandresult" name="commandresult" rows="5" cols="50" style="display:flex; align-self:stretch;"> </textarea>      -->
+    </div>   
+  </div>
+
+  <div style="display: flex; flex-direction: column;align-items: center;"></div>
+      <!-- <div id="drop_model_zone">... or Drop your model here</div> 
+   <output id="list"></output> -->
+  <div style="display: flex; flex-direction: column;align-items: start;">
+    <input type="button" id="save" value="Save to CSV" onclick="saveToCSV()"/> 
+  </div>
+
+
+  <div class="container1">
+    <input type="file" name="load_data" value="Datafile" id="load_data" class="hide"/> 
+  </div> 
+  <div style="display: flex; flex-direction: column;align-items: start;">
+    <input type="button" id="estimate" value="Estimate" onclick="estimate()" /> 
+  </div>
+</div>
+
 </body>
+
+
+<script>
+let load_data = document.getElementById('load_data');
+load_data.onchange = () => {
+  const selectedFiles = [...load_data.files];
+  var reader = new FileReader();
+  reader.onload = (function(theFile) {
+    return function(e) {
+      let data=csv_to_matrix(e.target.result);      
+      sim.set('data',data);   
+      let ts=[];
+      for(let i=0;i<data.size()[1];i++) ts.push(i);
+      sim.set('te',ts);   
+      sim.evaluate("splot('data','te',-1,'data')");    
+    };
+  })(selectedFiles[0]);
+  reader.readAsText(selectedFiles[0]);  
+}
+
+let drop_data = document.getElementById('drop_data_zone');
+
+
+//YPlot.plt.setSize({ width: YPlot.clientWidth, height: YPlot.clientWidth });
+window.addEventListener("resize", e => {
+  //YPlot.plt.setSize({ width: YPlot.clientWidth, height: YPlot.clientWidth });
+})
+
+//UPlot.plt.setSize({ width: UPlot.clientWidth, height: UPlot.clientWidth });
+window.addEventListener("resize", e => {
+  //UPlot.plt.setSize({ width: UPlot.clientWidth, height: UPlot.clientWidth });
+})
+//UPlot.plt.setSize({ width: UPlot.clientWidth, height: UPlot.clientWidth });
+window.addEventListener("resize", e => {
+  //UPlot.plt.setSize({ width: UPlot.clientWidth, height: UPlot.clientWidth });
+})
+
+</script>
+
+
 </html>

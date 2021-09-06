@@ -47,6 +47,93 @@ header  a{
   font-feature-settings: 'pnum' on, 'lnum' on, 'ss04' on, 'ss03' on, 'liga' off;
   color: #000000;
 }
+/*burger*/
+/*navbar 메뉴의 전체 공간 배열*/
+.nav-links{
+    display: flex; /*세로 정렬된 것들이 가로로 자동 정렬 */
+    justify-content: space-around; /*width가 있어야 공간 넓게 배치 가능*/
+    width: 70%;
+}
+.nav-links li{
+    list-style: none; /*li 파란색 없애기*/
+}
+.nav-links a{
+    color: rgb(17, 16, 16);
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size:14px;
+}
+.burger {
+    display:none;
+    cursor:pointer;
+}
+/*line 3개로 메뉴 바 만들기*/
+.burger div{
+    width:25px;
+    height:3px;
+    background-color:cadetblue;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+
+@media screen and (max-width:1080px){
+    .nav-links{
+        width:80%;
+    }
+}
+@media screen and (max-width:728px){
+    body{
+        overflow-x: hidden; /*x좌표로 스크롤 넘어가는 거 숨기기*/
+    }
+    /*새로운 메뉴바 만들어주기*/
+    .nav-links{
+        position:absolute;
+        right:0px; /*오른쪽에 딱 붙음*/
+        height:92vh;
+        top:8vh;
+        background-color: azure;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width:50%;
+        transform: translateX(100%); /*그 자체 x크기만큼 이동*/
+        transition: transform 0.5s ease-in; /*붐 하고 나타남*/
+    }
+    .nav-links li{
+        opacity: 0; /*내용 자체가 안보이게*/
+    }
+    .burger{
+        display: block;/*hidden되지 않게*/
+    }
+}
+.nav-active{
+    transform: translateX(0%);
+}
+
+/*soft하게 줄어들음*/
+@keyframes navLinkFade {
+    from{
+        opacity: 0;
+        transform:  translateX(50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+.toggle .line1{
+    transform:rotate(-45deg) translate(-5px,6px);
+}
+.toggle .line2{
+    opacity: 0;
+}
+.toggle .line3{
+    transform:rotate(45deg) translate(-5px,-6px);
+}
+
+
 #line-above img{
   margin-right:59px;
   margin-bottom: 5px;
@@ -64,169 +151,19 @@ header  a{
   width:100%;
   object-fit: fill;
 }
-#main-body{
-  width:100%;
-  display: flex;
-  flex-direction: row;
-}
-/* left section*/
-#left-control-tab{
+/* 왼쪽 설정 창 */
+#simworld{
   width:30%;
   margin: 60px 48px 72px 48px;
   display: flex;
 }
-#tab-border{
-  width: 472px;
-  padding: 16px;
-  background: #FFFFFF;
-  border: 0.5px solid #055688;
-  box-sizing: border-box;
-  border-radius: 4px;
-}
-.tabs{
-  display: flex;
-  flex-direction: row;
-}
-.tabs > span{
-  font-family: Lato;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 135%;
-  /* or 24px */
 
-}
-#selected-tab{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 212px;
-  height: 44px;
-  background: #055688;
-  border: 0.4px solid #055688;
-  box-sizing: border-box;
-  border-radius: 4px;
-}
-#selected-tab > span{
-  text-align: center;
-  font-feature-settings: 'pnum' on, 'lnum' on, 'ss03' on, 'liga' off;
-  color: #FFFFFF;
-}
-.unselected-tab{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 130px;
-  height: 44px;
-  border: 0.4px solid #055688;
-  box-sizing: border-box;
-  border-radius: 4px;
-}
-.unselected-tab > span{
-  font-feature-settings: 'pnum' on, 'lnum' on, 'ss03' on, 'liga' off;
-  color: #888888;
-}
-.info{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-}
-.info-span-div{
-  display:flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-}
-.info-span-div> .info-subtitle{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0px;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-  margin: 0px 0px;
-}
-.info-span-div > .info-subtitle >span{
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 10px;
-  line-height: 175%;
-  /* identical to box height, or 17px */
-  text-transform: uppercase;
-  /* Blue Gray / 500 */
-  color: #64748B;
-}
-.info-span-div > .info-subtitle > .first-subtitle{
-  /* Inside Auto Layout */
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-  margin-right:8px;
-}
-.info-span-div > .info-subtitle > .dot{
-  /* Inside Auto Layout */
-  flex: none;
-  order: 1;
-  flex-grow: 0;
-}
-.info-span-div > .info-subtitle > .second-subtitle{
-  /* Inside Auto Layout */
-  flex: none;
-  order: 2;
-  flex-grow: 0;
-  margin: 0px 8px;
-}
+/*-----------------------*/
+/* 글씨체 및 글씨 설정 start*/
+/*-----------------------*/
 
-.info-span-div .info-title{
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 175%;
-  /* identical to box height, or 35px */
-  font-feature-settings: 'pnum' on, 'lnum' on, 'ss03' on, 'liga' off;
-
-  /* Blue Gray / 700 */
-  color: #334155;
-
-  /* Inside Auto Layout */
-  flex: none;
-  order: 1;
-  align-self: stretch;
-  flex-grow: 0;
-  margin: 0px 0px;
-}
-.info-p>p{
-  font-family: Lora;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 175%;  
-  /* or 21px */
-  font-feature-settings: 'pnum' on, 'lnum' on, 'ss03' on, 'liga' off;
-
-  /* Blue Gray / 500 */
-  color: #64748B;
-  mix-blend-mode: normal;
-}
-.modelsetting1{
-  display:flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-  margin-top:37px;
-}
-.modelsetting2{
-  display:flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-  margin-top:12px;
-}
-.setting-title{
+/*constants Variable 제목 부분*/
+#simworld h4 {
   font-family: Inter;
   font-style: normal;
   font-weight: bold;
@@ -237,48 +174,112 @@ header  a{
   font-feature-settings: 'pnum' on, 'lnum' on;
   color: #055688;
 }
-.setting-component{
-  display: flex;
-  flex-direction: column;
-  font-family: Lora;
+.info-subtitle {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 175%;
+  /* identical to box height, or 17px */
+  text-transform: uppercase;
+  /* Blue Gray / 500 */
+  color: #64748B;
+}
+/*모델 이름*/
+#Headers h1{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 175%;
+    /* identical to box height, or 35px */
+    font-feature-settings: 'pnum' on, 'lnum' on, 'ss03' on, 'liga' off;
+
+    /* Blue Gray / 700 */
+    color: #334155;
+
+    /* Inside Auto Layout */
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: 0px 0px;
+}
+/*모델 설명 중 h3 소제목*/
+#Headers h3{
+  font-family: Inter;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 13px; 
+  line-height: 175%;
+  /* or 26px */
+
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  color: #055688;
+}
+/*모델 설명*/
+#Headers{
+font-family: Lora;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
+  line-height: 175%;  
+  /* or 21px */
+  font-feature-settings: 'pnum' on, 'lnum' on, 'ss03' on, 'liga' off;
+
+  /* Blue Gray / 500 */
+  color: #515d6d; /*64748B*/
+  mix-blend-mode: normal;
+}
+/*변수 설명 중 h5 소제목*/
+#Constants h5{
+  font-family: Inter;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 13px; 
   line-height: 175%;
-  /* identical to box height, or 21px */
+  /* or 26px */
 
   font-feature-settings: 'pnum' on, 'lnum' on;
-  color: #64748B;
+  color: #055688;
 }
-.expression{
-  display: flex;
-  justify-content: center;
-  margin-top: 12px;
-  margin-bottom: 12px;
-  align-items: center;
+/*변수 설명 부분*/
+#Constants{
+font-family: Lora;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 175%;  
+  /* or 21px */
+  font-feature-settings: 'pnum' on, 'lnum' on, 'ss03' on, 'liga' off;
+  color: #515d6d;
+  mix-blend-mode: normal;
 }
-.constant-graph{
-  display: flex;
-  justify-content: center;
-  margin-top:12px;
-}
+/*변수 설명 중 h5 소제목*/
+#Variables h5{
+  font-family: Inter;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 13px; 
+  line-height: 175%;
+  /* or 26px */
 
-/*right section*/
-#right-container{
-  /* width:808px; */
-  wid
-  padding-left:44px;
-  margin: 60px 48px 72px 48px; 
-  display: flex;
-  flex-direction: column;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  color: #055688;
 }
-.graph-title{
-  display: flex;
-  flex-direction: row;
-  height:60px;
-  align-items: center;
+/*변수 설명 부분*/
+#Variables{
+font-family: Lora;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 175%;  
+  /* or 21px */
+  font-feature-settings: 'pnum' on, 'lnum' on, 'ss03' on, 'liga' off;
+  color: #515d6d;
+  mix-blend-mode: normal;
 }
-.graph-title #graph-title{
+#plotviz > *{
   margin-left:12px;
   font-family: Inter;
   font-style: normal;
@@ -291,78 +292,20 @@ header  a{
   /* Blue Gray / 700 */
   color: #334155;
 }
-.graph-images{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 18px;
-}
-.graph-images > .graph-name {
-  font-family: Lora;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 175%;
+/*-----------------------*/
+/* 글씨체 및 글씨 설정 end */
+/*-----------------------*/
 
-  /* identical to box height, or 35px */
-  font-feature-settings: 'pnum' on, 'lnum' on, 'ss03' on, 'liga' off;
-
-  margin: 10px 8px;
+.link {
+    stroke: #000;
+    stroke-width: 1.5px;
 }
-
-.under-line{
-  display:flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  height:1px;
-  margin-top:50px;
+.node {
+    fill: #000;
+    stroke: #fff;
+    stroke-width: 1.5px;
 }
-.under-line >img{
-  width:100%;
-  object-fit: fill;
-}
-.references{
-  margin-top:20px;
-  display: flex;
-  flex-direction: row;
-}
-.ref-container{
-  display: flex;
-  flex-direction: column;
-}
-.ref-title{
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 175%;
-  /* identical to box height, or 31px */
-
-  font-feature-settings: 'pnum' on, 'lnum' on, 'ss03' on, 'liga' off;
-
-  /* Blue Gray / 700 */
-
-  color: #334155;
-}
-.ref-link{
-  font-family: Lora;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 18px;
-  /* or 138% */
-  display: flex;
-  align-items: center;
-  letter-spacing: -0.01em;
-
-  /* Rectangle 3 */
-  color: #1C89B7;
-
-  /* Inside Auto Layout */
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-  margin: 0px 10px;
-}
+.node.a { fill: #1f77b4; }
+.node.b { fill: #ff7f0e; }
+.node.c { fill: #2ca02c; }
+.node.d { fill: #00305c; }
