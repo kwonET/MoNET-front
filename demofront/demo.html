@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="demo.css">
+    
+    <!-- 폰트 설정 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <title>MoNET Neural Simulator</title>
+</head>
+
+<!--헤더 부분 - 메뉴 설정, 로고 등-->
+<header>
+    <div id="line-above">
+        <!-- 왼쪽  상단  메인  타이틀 -->
+        <h4 class="header-item">
+            MoNET Neural Simulator
+        </h4>
+        <!-- 왼쪽  상단  메인  타이틀 -->
+        <nav class="header-item">
+            <ul class="nav__list">
+                <li class="nav__list-item">
+                    <a href="" class="nav__link">Bilinear MMD</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- 메뉴 설정을 위한 창 -->
+<div class="header-item">
+<!-- <div class="nav-links" style="display: flex; flex-direction: row;align-items: center;"> -->
+    <div class="dropdown">
+    <button class="dropbtn">Model</button>
+    <div class="dropdown-content">
+        <a href="#">Bilinear LFP</a>
+        <a href="#">Bilinear MMD</a>
+        <a href="#">Wilson-Cowan</a>
+        <a href="#">Mean Field</a>
+        <a href="#">JanseRit</a>
+    </div>
+    </div>
+    <button class="dropbtn" id="homebtn">Home</button>
+</div>
+</header>
+
+<body>
+    <div id="line">
+        <img src="images/line.svg" alt="">  
+    </div>
+    <main>
+        <!--모델설정아래 전체workspace-->
+        <div id="workspace" style="display: flex;flex-direction:row;"> 
+            <!--왼쪽 설정창 simworld/configuration-->
+            <div id="simworld" style="display: flex; flex-direction:column;align-items:stretch;width:40%">
+                <div id="configuration" style="display: flex; flex-direction:column;align-items:stretch;justify-items: start;">  
+                    <div class="container">
+
+                        <ul class="tabs">
+                            <li class="tab-link current" data-tab="tab-1">EXPLANATION</li>
+                            <li class="tab-link" data-tab="tab-2">SETTING</li>
+                            <li class="tab-link" data-tab="tab-3">CODE</li>
+                        </ul>
+                    
+                        <div id="tab-1" class="tab-content current">
+                            <!--탭1 : 설명, 상수 파트-->
+                            <div class="info-subtitle">
+                                <span>MODEL • INTRODUCTION</span>
+                                </div>
+                                <div id="Headers" class='mathjax' style="display: flex; flex-direction:column;justify-items: start;">
+                                    <h3>Bilinear model test</h3>
+                                    Model Explanation with Equation here 
+                                </div>
+                                <div id="Constants">
+                                    <h4 id="Constantsmsg" style="visibility:hidden;">Constants</h4>
+                                    <div id="Constants1">
+                                        <h5>Initials</h5>
+                                        Constants Explanation of Initials here
+                                        <h5>Options</h5>
+                                        Constants Explanation of Options here
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tab-2" class="tab-content">
+                            <!--탭2 : 변수 파트-->
+                            <div id="Variables">
+                                <h4 id="Variablesmsg" style="visibility:hidden;">Variables</h4>
+                                <div id="Variables1"></div>
+                            </div>  
+                        </div>
+
+                        <div id="tab-3" class="tab-content">
+                            <!-- 탭3 : 코드 작성 파트 -->
+                            <textarea id="onlineedit" name="onlineedit" rows="50" cols="50" style="display:none; align-self:stretch;"> </textarea>                 </div>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+
+            <!----그래프----->
+            <div id="editor" style="display:flex;flex-direction:column;width:60%;align-items:stretch;justify-items: stretch;">
+                <div id="plotviz" style="display:flex;flex-direction:column;align-items:stretch;width:100%;">
+                    <img src="images/graph1.svg" alt="">
+                </div>
+            </div>
+        </div>
+    </main>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>

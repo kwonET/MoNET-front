@@ -1,0 +1,324 @@
+*{
+    margin: 0px;
+    padding: 0px;
+  }
+  ul{
+    list-style: none;
+  }
+  a{
+    text-decoration: none;
+  }
+  
+  /* header */
+  header #line-above{
+    height:80px;
+    /* margin-bottom: -10px; */
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between; 
+    align-items: flex-end;
+  }
+  
+  header .header-item{
+    margin-right:3.3%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 6px;
+  
+  }
+  header  h4{
+    font-family: Lora;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 130%;
+    /* identical to box height, or 39px */
+  
+    margin-left:3.3%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-feature-settings: 'pnum' on, 'lnum' on, 'ss04' on, 'ss03' on, 'liga' off;
+    color: #000000;
+  }
+  #homebtn{
+    margin-left:28px;
+  }
+  /* Dropdown Button */
+  .dropbtn {
+    /* padding: 12px; */
+    background: none;
+    border:none;
+    font-family: Lora;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 130%;
+    /* or 31px */
+  
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-feature-settings: 'pnum' on, 'lnum' on, 'ss04' on, 'ss03' on, 'liga' off;
+  
+    color: #000000;
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 14px;
+    text-decoration: none;
+    display: block;
+    font-family: Lora;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    /* display: flex; */
+    align-items: center;
+    text-align: center;
+    font-feature-settings: 'pnum' on, 'lnum' on, 'ss04' on, 'ss03' on, 'liga' off;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #ddd;}
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover .dropbtn {background-color: #055688; color:rgb(243, 243, 243);}
+  
+  #line{
+    margin-right:40px;
+    margin-left:40px;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height:0.5px;
+  }
+  #line > img{
+    width:100%;
+    object-fit: fill;
+  }
+  
+/* -------------------- */
+/* 왼쪽 설정 창 */
+/* -------------------- */
+  #simworld{
+    width:30%;
+    margin: 60px 48px 72px 48px;
+    display: flex;
+  }
+
+main {
+    display:flex;
+    flex-direction: row;
+}
+/* -------------------- */
+/* 탭 부분 설정 */
+/* -------------------- */
+.container{
+	width: 500px;
+	margin: 0 auto;
+}
+ul.tabs{
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+ul.tabs li{
+	background: none;
+	color: #222;
+	display: inline-block;
+	padding: 10px 15px;
+	cursor: pointer;
+}
+
+ul.tabs li.current{
+	background: #ededed;
+	color: #222;
+}
+
+.tab-content{
+	display: none;
+	background: #ededed;
+	padding: 15px;
+}
+
+.tab-content.current{
+	display: inherit;
+}
+
+  /*-----------------------*/
+  /* 글씨체 및 글씨 설정 start*/
+  /*-----------------------*/
+  
+  /*constants Variable 제목 부분*/
+  #simworld h4 {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 175%;
+    /* or 26px */
+  
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #055688;
+  }
+
+  
+  .info-subtitle {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 175%;
+    /* identical to box height, or 17px */
+    text-transform: uppercase;
+    /* Blue Gray / 500 */
+    color: #64748B;
+  }
+  /*모델 이름*/
+  #Headers h1{
+      font-family: Inter;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 175%;
+      /* identical to box height, or 35px */
+      font-feature-settings: 'pnum' on, 'lnum' on, 'ss03' on, 'liga' off;
+  
+      /* Blue Gray / 700 */
+      color: #334155;
+  
+      /* Inside Auto Layout */
+      flex: none;
+      order: 1;
+      align-self: stretch;
+      flex-grow: 0;
+      margin: 0px 0px;
+  }
+  /*모델 설명 중 h3 소제목*/
+  #Headers h3{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 13px; 
+    line-height: 175%;
+    /* or 26px */
+  
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #055688;
+  }
+  /*모델 설명*/
+  #Headers{
+  font-family: Lora;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 175%;  
+    /* or 21px */
+    font-feature-settings: 'pnum' on, 'lnum' on, 'ss03' on, 'liga' off;
+  
+    /* Blue Gray / 500 */
+    color: #515d6d; /*64748B*/
+    mix-blend-mode: normal;
+  }
+  /*변수 설명 중 h5 소제목*/
+  #Constants h5{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 13px; 
+    line-height: 175%;
+    /* or 26px */
+  
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #055688;
+  }
+  /*변수 설명 부분*/
+  #Constants{
+  font-family: Lora;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 175%;  
+    /* or 21px */
+    font-feature-settings: 'pnum' on, 'lnum' on, 'ss03' on, 'liga' off;
+    color: #515d6d;
+    mix-blend-mode: normal;
+  }
+  /*변수 설명 중 h5 소제목*/
+  #Variables h5{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 13px; 
+    line-height: 175%;
+    /* or 26px */
+  
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #055688;
+  }
+  /*변수 설명 부분*/
+  #Variables{
+  font-family: Lora;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 175%;  
+    /* or 21px */
+    font-feature-settings: 'pnum' on, 'lnum' on, 'ss03' on, 'liga' off;
+    color: #515d6d;
+    mix-blend-mode: normal;
+  }
+  #plotviz > *{
+    margin-left:12px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 135%;
+    /* or 35px */
+    font-feature-settings: 'pnum' on, 'lnum' on, 'ss03' on, 'liga' off;
+  
+    /* Blue Gray / 700 */
+    color: #334155;
+  }
+  /*-----------------------*/
+  /* 글씨체 및 글씨 설정 end */
+  /*-----------------------*/
+  
+  .link {
+      stroke: #000;
+      stroke-width: 1.5px;
+  }
+  .node {
+      fill: #000;
+      stroke: #fff;
+      stroke-width: 1.5px;
+  }
+  .node.a { fill: #1f77b4; }
+  .node.b { fill: #ff7f0e; }
+  .node.c { fill: #2ca02c; }
+  .node.d { fill: #00305c; }
+  
