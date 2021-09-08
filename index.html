@@ -1,3 +1,4 @@
+ 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,40 +56,52 @@
       </ul> 
     </nav> -->
     <!-- 메뉴 설정을 위한 창 -->
-    <div class="nav-links" style="display: flex; flex-direction: column;align-items: center;">
-      <div>
-        <!--model 설정-->
-        <label for="Model"></label> 
-        <!-- <select id="model" name="model" onchange="loadModel()"> -->
-        <!--option은 value에 따라 해당 모델이 설정됨.-->
-        <ul class="nav-links" id="model" name="model" onchange="loadModel()">
-          <li><a href="#" value="./models/bilinear_basic.m">Bilinear LFP</a></li>
-          <li><a href="#" value="./models/bilinear_mmd.m">Bilinear MMD</a></li>
-          <li><a href="#" value="./models/wilsoncowan_basic.m">Wilson-Cowan</a></li>
-          <li><a href="#" value="./models/mean_field_model_dm.m">Mean Field</a></li>
-          <li><a href="#" value="./models/jansen_rit_model_4.m">JanseRit</a></li>
-        </ul>
-        <!-- <option value="./models/bilinear_basic.m">Bilinear LFP</option>
-                <option value="./models/bilinear_mmd.m">Bilinear MMD</option>
-                <option value="./models/wilsoncowan_basic.m">Wilson-Cowan</option>
-                <option value="./models/mean_field_model_dm.m">Mean Field</option>
-                <option value="./models/jansen_rit_model_4.m">JanseRit</option> -->
-        <!-- </select> -->
+    <div class="header-item">
+      <!-- <div class="nav-links" style="display: flex; flex-direction: row;align-items: center;"> -->
+        <div class="dropdown">
+          <button class="dropbtn">Model</button>
+          <div class="dropdown-content">
+            <a href="#">Bilinear LFP</a>
+            <a href="#">Bilinear MMD</a>
+            <a href="#">Wilson-Cowan</a>
+            <a href="#">Mean Field</a>
+            <a href="#">JanseRit</a>
+          </div>
+        </div>
+        <button class="dropbtn" id="homebtn">Home</button>
+
+        <!------------------------>
+        <!-- 모델 설정 기존 코드 -->
+        <!------------------------>
+          <!--model 설정-->
+          <!-- <label for="Model"></label>  -->
+          <!-- <select id="model" name="model" onchange="loadModel()"> -->
+          <!--option은 value에 따라 해당 모델이 설정됨.-->
+            <!-- <option value>None</option>
+            <option value="./models/bilinear_basic.m">Bilinear LFP</option>
+            <option value="./models/bilinear_mmd.m">Bilinear MMD</option>
+            <option value="./models/wilsoncowan_basic.m">Wilson-Cowan</option>
+            <option value="./models/mean_field_model_dm.m">Mean Field</option>
+            <option value="./models/jansen_rit_model_4.m">JanseRit</option>
+          </select> -->
+        <!------------------------>
+        <!-- 모델 설정 기존 코드 -->
+        <!------------------------>
+      <!-- </div> -->
+    </div>
+    <!-- <div class="header-item">
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
       </div>
-    </div>
-    <div class="burger">
-      <div class="line1"></div>
-      <div class="line2"></div>
-      <div class="line3"></div>
-    </div>
-  </div>
-  <div id="line">
-    <img src="images/line.svg" alt="">
-  </div>
+    </div> -->
 </header>
 
 <body> 
-
+  <div id="line">
+    <img src="images/line.svg" alt="">
+  </div>
   <!--모델설정아래 전체workspace-->
   <div id="workspace" style="display: flex;flex-direction:row;"> 
     <!--왼쪽 설정창 simworld/configuration-->
