@@ -14,18 +14,24 @@ header #line-above{
   height:80px;
   /* margin-bottom: -10px; */
   display:flex;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between; 
   align-items: flex-end;
 }
+
 header .header-item{
-  margin-bottom: 8px;
+  margin-right:3.3%;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 6px;
+
 }
 header  h4{
   font-family: Lora;
   font-style: normal;
   font-weight: 500;
-  font-size: 30px;
+  font-size: 28px;
   line-height: 130%;
   /* identical to box height, or 39px */
 
@@ -36,108 +42,70 @@ header  h4{
   font-feature-settings: 'pnum' on, 'lnum' on, 'ss04' on, 'ss03' on, 'liga' off;
   color: #000000;
 }
-header  a{
+#homebtn{
+  margin-left:28px;
+}
+/* Dropdown Button */
+.dropbtn {
+  /* padding: 12px; */
+  background: none;
+  border:none;
   font-family: Lora;
   font-style: normal;
   font-weight: normal;
-  font-size: 24px;
+  font-size: 20px;
+  line-height: 130%;
+  /* or 31px */
+
   display: flex;
   align-items: center;
   text-align: center;
   font-feature-settings: 'pnum' on, 'lnum' on, 'ss04' on, 'ss03' on, 'liga' off;
+
   color: #000000;
 }
-/*burger*/
-/*navbar 메뉴의 전체 공간 배열*/
-.nav-links{
-    display: flex; /*세로 정렬된 것들이 가로로 자동 정렬 */
-    justify-content: space-around; /*width가 있어야 공간 넓게 배치 가능*/
-    width: 70%;
-}
-.nav-links li{
-    list-style: none; /*li 파란색 없애기*/
-}
-.nav-links a{
-    color: rgb(17, 16, 16);
-    text-decoration: none;
-    letter-spacing: 3px;
-    font-weight: bold;
-    font-size:14px;
-}
-.burger {
-    display:none;
-    cursor:pointer;
-}
-/*line 3개로 메뉴 바 만들기*/
-.burger div{
-    width:25px;
-    height:3px;
-    background-color:cadetblue;
-    margin: 5px;
-    transition: all 0.3s ease;
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
 }
 
-
-@media screen and (max-width:1080px){
-    .nav-links{
-        width:80%;
-    }
-}
-@media screen and (max-width:728px){
-    body{
-        overflow-x: hidden; /*x좌표로 스크롤 넘어가는 거 숨기기*/
-    }
-    /*새로운 메뉴바 만들어주기*/
-    .nav-links{
-        position:absolute;
-        right:0px; /*오른쪽에 딱 붙음*/
-        height:92vh;
-        top:8vh;
-        background-color: azure;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width:50%;
-        transform: translateX(100%); /*그 자체 x크기만큼 이동*/
-        transition: transform 0.5s ease-in; /*붐 하고 나타남*/
-    }
-    .nav-links li{
-        opacity: 0; /*내용 자체가 안보이게*/
-    }
-    .burger{
-        display: block;/*hidden되지 않게*/
-    }
-}
-.nav-active{
-    transform: translateX(0%);
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
 }
 
-/*soft하게 줄어들음*/
-@keyframes navLinkFade {
-    from{
-        opacity: 0;
-        transform:  translateX(50px);
-    }
-    to{
-        opacity: 1;
-        transform: translateX(0px);
-    }
-}
-.toggle .line1{
-    transform:rotate(-45deg) translate(-5px,6px);
-}
-.toggle .line2{
-    opacity: 0;
-}
-.toggle .line3{
-    transform:rotate(45deg) translate(-5px,-6px);
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 14px;
+  text-decoration: none;
+  display: block;
+  font-family: Lora;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  /* display: flex; */
+  align-items: center;
+  text-align: center;
+  font-feature-settings: 'pnum' on, 'lnum' on, 'ss04' on, 'ss03' on, 'liga' off;
 }
 
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
 
-#line-above img{
-  margin-right:59px;
-  margin-bottom: 5px;
-}
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #055688; color:rgb(243, 243, 243);}
+
 #line{
   margin-right:40px;
   margin-left:40px;
@@ -145,12 +113,31 @@ header  a{
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  height:1px;
+  height:0.5px;
 }
 #line > img{
   width:100%;
   object-fit: fill;
 }
+
+/* -------------------- */
+/* 기존 메뉴바 코드 */
+/* -------------------- */
+/* .burger {
+    cursor:pointer;
+    margin-right:59px;
+    margin-bottom: 5px;
+}
+
+/*line 3개로 메뉴 바 만들기*/
+/* .burger div{
+    width:25px;
+    height:2px;
+    background-color:cadetblue;
+    margin: 5px;
+    transition: all 0.3s ease;
+} */ 
+
 /* 왼쪽 설정 창 */
 #simworld{
   width:30%;
