@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- 폰트 설정 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <title>MoNET Neural Simulator</title>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="javascripts/tab.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="./css/nomalize.css" />
+    <link rel="stylesheet" type="text/css" href="./css/d3chart.css" />
+    <link rel="stylesheet" type="text/css" href="./css/jquery-ui.custom.css" />
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <!--importing-->
+    <script src="https://unpkg.com/mathjs@9.4.4/lib/browser/math.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src='https://cdn.plot.ly/plotly-2.3.0.min.js'></script>
+
+    <!-- 
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    -->
+    <script src="./lib/jquery-3.6.min.js" charset="utf-8"></script>
+    <script src="./lib/jquery-ui.custom.js" charset="utf-8"></script>
+    <!-- <script src="./lib/jquery-confirm.js"></script> -->
+    <script src="./lib/d3.v5.min.js" charset="utf-8"></script>
+    <script src="./lib/d3-quadtree.v3.min.js" charset="utf-8"></script>
+    <script src="./lib/d3-manyBodyReuse.js" charset="utf-8"></script>
+    <script src="./lib/d3-force-boundary.min.js" charset="utf-8"></script>
+    <script src="./javascripts/forceLinkView.js"></script>
+    <script src="./javascripts/edgeBundleView.js"></script>
+    <script src="./javascripts/matrixView.js"></script>
+    <link rel="shortcut icon" href="#" />
+
+    <script src="/javascripts/basicfuncs.js"></script>    
+    <script type="text/javascript" id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+
+    <script src="/javascripts/odesolve.js"></script>      
+    <script src="/javascripts/mfunctions.js"></script>
+    <script src="/javascripts/plots.js"></script>    
+    <script src="/javascripts/model.js"></script>        
+    <script src="/javascripts/page.js"></script>    
+    <script src="/javascripts/neuralweb.js"></script>
+
+    <!--stylesheets 
+    <link href="/stylesheets/main.css" rel="stylesheet" type="text/css"/> -->
+</head>
+
+<!--헤더 부분 - 메뉴 설정, 로고 등-->
+<header>
+    <div id="line-above">
+        <!-- 왼쪽  상단  메인  타이틀 -->
+        <h4 class="header-item">
+            MoNET Neural Simulator
+        </h4>
+        <!-- 왼쪽  상단  메인  타이틀 -->
+        <h5 class="header-item">
+            Bilinear MMD
+        </h5>
+        <!-- 메뉴 설정을 위한 창 -->
+        <div class="header-item">
+            <!-- <div class="nav-links" style="display: flex; flex-direction: row;align-items: center;"> -->
+            <div class="dropdown">
+                <button class="dropbtn">Model</button>
+                <div class="dropdown-content">
+                    <a href="#">Bilinear LFP</a>
+                    <a href="#">Bilinear MMD</a>
+                    <a href="#">Wilson-Cowan</a>
+                    <a href="#">Mean Field</a>
+                    <a href="#">JanseRit</a>
+                </div>
+            </div>
+            <button class="dropbtn" id="homebtn">Home</button>
+        </div>
+</header>
+
+<body>
+    <!-- 헤더랑 메인을 구분해주는 선 -->
+    <div id="line">
+        <img src="images/line.svg" alt="">
+    </div>
+    <!--모델설정아래 전체workspace-->
+    <main id="workspace">
+        <!--왼쪽 설정창 simworld/configuration-->
+        <div class="box simworld" id="simworld" style="display: flex; flex-direction:column;align-items:stretch;">
+            <div id="configuration"
+                style="display: flex; flex-direction:column;align-items:stretch;justify-items: start;">
+                <!-- 탭부분 컨테이너 -->
+                <div class="container">
+                    <ul class="tabs">
+                        <li class="tab-link current" data-tab="tab-1">EXPLANATION</li>
+                        <li class="tab-link" data-tab="tab-2">SETTING</li>
+                        <li class="tab-link" data-tab="tab-3">CODE</li>
+                    </ul>
+                    <!--탭1 : 설명, 상수 파트-->
+                    <div id="tab-1" class="tab-content current">
+                        <!-- 탭1 제목 부분 -->
+                        <div class="info-subtitle">
+                            <span>MODEL • INTRODUCTION</span>
+                        </div>
+                        <div id="Headers" class='mathjax'
+                            style="display: flex; flex-direction:column;justify-items: start;">
+                            <h3>Bilinear model test</h3>
+                            Model Explanation with Equation here
+                            <br>
+                            Model Explanation with Equation here
+                            Model Explanation with Equation here
+                            Model Explanation with Equation here
+                            Model Explanation with Equation here
+                        </div>
+
+                        <!-- 탭1에 대한 세부사항 : 모델에 대한 설명은 이부분에 넣으시면 됩니다.-->
+                        <div id="Constants">
+                            <!-- 소제목 -->
+                            <h4 id="modelmsg">State Model</h4>
+                            <!-- 설명부분 -->
+                            <div id="Model-explain">
+                                Constants Explanation of State Model here
+                                <br>
+                                Constants Explanation of State Model here
+                                Constants Explanation of State Model here
+                                Constants Explanation of State Model here
+                                Constants Explanation of State Model here
+                            </div>
+                            <!-- 소제목 -->
+                            <h4 id="modelmsg">Observation Model</h4>
+                            <!-- 설명부분 -->
+                            <div id="Model-explain">
+                                Constants Explanation of Observation Model here
+                                <br>
+                                Constants Explanation of Observation Model here
+                                Constants Explanation of Observation Model here
+                                Constants Explanation of Observation Model here
+                                Constants Explanation of Observation Model here
+                            </div>
+                        </div>
+                        <div id="Constants">
+                            <!-- 소제목 -->
+                            <h4 id="Constantsmsg" >Constants</h4>
+                            <!-- 설명부분 -->
+                            <div id="Constants1">
+                                <!-- 소제목 중에서도 h5으로 갈래를 나눌 수 있습니다. -->
+                                <h5>Initials</h5>
+                                Constants Explanation of Initials here
+                                Constants Explanation of Initials here
+                                Constants Explanation of Initials here
+                                Constants Explanation of Initials here
+                                <br>
+                                <br>
+                                <!-- 소제목 중에서도 h5으로 갈래를 나눌 수 있습니다. -->
+                                <h5>Options</h5>
+                                Constants Explanation of Options here
+                                Constants Explanation of Options here
+                                Constants Explanation of Options here
+                                Constants Explanation of Options here
+                            </div>
+                        </div>
+                        <!-- </div> -->
+                    </div>
+
+                    <!--탭2 : 변수 설정 파트-->
+                    <div id="tab-2" class="tab-content">
+                        <!-- 탭2 변수 제목 부분 -->
+                        <div class="info-subtitle">
+                            <span>MODEL • SETTING</span>
+                        </div>  
+                        <div id="Headers" class='mathjax' style="display: flex; flex-direction:column;justify-items: start;">
+                            <h3>Setting Variables</h3>
+                                Variables Explanation of how to Setting Variables here
+                                <br>
+                                Variables Explanation of how to Setting Variables here
+                        </div>
+                        <!-- 탭2에 대한 세부사항 : 변수설정에 대한 설명은 이부분에 넣으시면 됩니다.-->
+                        <div id="Variables">
+                            <!-- 소제목 -->
+                            <h4 id="Variablesmsg"">Model</h3>
+                            <!-- 설명부분 -->
+                            <div id="Variables1">
+                                Variables Explanation of Model here
+                                Variables Explanation of Model here
+                                Variables Explanation of Model here
+                                Variables Explanation of Model here
+                            </div>
+                            <!-- 소제목 -->
+                            <h4 id="Variablesmsg">Options</h4>
+                            <!-- 설명부분 -->
+                            <div id="Variables1">
+                                Variables Explanation of Options here
+                                Variables Explanation of Options here
+                                Variables Explanation of Options here
+                                Variables Explanation of Options here
+                            </div>
+                            <!-- 소제목 -->
+                            <h4 id="Variablesmsg"">Cal</h3>
+                            <!-- 설명부분 -->
+                            <div id=" Variables1">
+                                Variables Explanation of Cal here
+                                Variables Explanation of Cal here
+                                Variables Explanation of Cal here
+                                Variables Explanation of Cal here
+                            </div>
+                            <!-- 소제목 -->
+                            <h4 id="Variablesmsg">fMRI</h4>
+                            <!-- 설명부분 -->
+                            <div id="Variables1">
+                                Variables Explanation of fMRI here
+                                Variables Explanation of fMRI here
+                                Variables Explanation of fMRI here
+                                Variables Explanation of fMRI here
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!--탭3 : 코드 파트-->
+                    <div id="tab-3" class="tab-content">
+                        <!-- 탭3 코드 제목 부분 -->
+                        <div class="info-subtitle">
+                            <span>CODE • OPENSOURCE</span>
+                        </div>
+                        <!-- 코드창 이용법에 대한 설명 -->
+                        <div id="Headers" class='mathjax' style="display: flex; flex-direction:column;justify-items: start;">
+                            <h3>Online Code</h3>
+                            Simple explanation about Code Textarea here
+                            <br>
+                            Simple explanation about Code Textarea here
+                        </div>
+                        <!-- 코드 작성 파트 -->
+                        <textarea id="onlineedit" name="onlineedit" rows="50" cols="50" style="align-self:stretch;"> 
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!--오른 쪽 창 ; 그래프 표시 부분-->
+        <div class="box graph" id="right-container">
+            <div id="graphcontainer">
+                <!-- 그래프 제목 부분 -->
+                <div class="graph-title">
+                    <!-- 파란색 바 이미지 -->
+                    <div class="bar">
+                        <img src="images/bar.svg" alt="" width=13px height=50px>
+                    </div>
+                    <!-- 그래프 타이틀 텍스트 -->
+                    <div id="graph-title">
+                        Result Graph
+                    </div>
+                </div>
+                <!-- 그래프 보여지는 부분 - 이 부분에 그래프를 연동시키시면 됩니다. -->
+                <div class="graph-images">
+                    <!-- 그래프 소제목 (U,X) -->
+                    <div class="graph-name">U</div>
+                    <img src="images/graph1.svg" alt="">
+                </div>
+                <div class="graph-images">
+                    <!-- 그래프 소제목 (U,X) -->
+                    <div class="graph-name">X</div>
+                    <img src="images/graph2.svg" alt="">
+                </div>
+                <!-- 그래프와 reference를 구분짓는 선 -->
+                <div class="under-line">
+                    <img src="images/line-lighter.svg" alt="">
+                </div>
+                <!-- reference 부분 - 참조 외에도 copyright 등의 내용을 넣을 수 있습니다. -->
+                <div class="references">
+                    <div class="ref-container">
+                        <div class="ref-title">Reference</div>
+                        <!-- reference 내용 -->
+                        <div class="ref-link">Heitmann, Stewart, and G. Bard Ermentrout. "Direction-selective motion
+                            discrimination
+                            by traveling waves in visual
+                            cortex." PLoS Computational Biology 16.9 (2020): e1008164.</div>
+                    </div>
+                    <div class="ref-container">
+                        <div class="ref-title">Reference</div>
+                        <!-- reference 내용 -->
+                        <div class="ref-link">Heitmann, Stewart, and G. Bard Ermentrout. "Direction-selective motion
+                            discrimination
+                            by
+                            traveling waves in visual
+                            cortex." PLoS Computational Biology 16.9 (2020): e1008164.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

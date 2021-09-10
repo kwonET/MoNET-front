@@ -1,0 +1,520 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+ul{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+
+/* header 부분 - 컨테이너 및 배치 설정 */
+header #line-above{
+  height:80px;
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between; 
+  align-items: flex-end;
+}
+header .header-item{
+  margin-right:3.3%;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 6px;
+}
+
+/* header 부분 - 메인 제목 부분 (MoNET Neural Simulator)*/
+header  h4{
+  font-family: Lora;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 130%;
+  margin-left:3.3%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-feature-settings: 'pnum' on, 'lnum' on, 'ss04' on, 'ss03' on, 'liga' off;
+  color: #000000;
+}
+
+/* header 부분 - 모델 제목 부분 (Bilinear MMD- 그 외 선택된 모델)*/
+  header  h5{
+  font-family: Lora;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 130%;
+  margin-left:3.3%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-feature-settings: 'pnum' on, 'lnum' on, 'ss04' on, 'ss03' on, 'liga' off;
+  color: #000000;
+}
+
+/*header 부분 - Home 부분*/
+#homebtn{
+  margin-left:28px;
+}
+
+/*----------------*/
+/* header 부분 - 드롭다운 버튼 (Model) */
+/* --------------- */
+
+/* Dropdown Button */
+.dropbtn {
+  /* padding: 12px; */
+  background: none;
+  border:none;
+  font-family: Lora;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 130%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-feature-settings: 'pnum' on, 'lnum' on, 'ss04' on, 'ss03' on, 'liga' off;
+
+  color: #000000;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 14px;
+  text-decoration: none;
+  display: block;
+  font-family: Lora;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  /* display: flex; */
+  align-items: center;
+  text-align: center;
+  font-feature-settings: 'pnum' on, 'lnum' on, 'ss04' on, 'ss03' on, 'liga' off;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #055688; color:rgb(243, 243, 243);}
+
+/*header과 main을 구분하는 line 부분 설정*/
+#line{
+  margin-right:40px;
+  margin-left:40px;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height:0.5px;
+}
+#line > img{
+  width:100%;
+  object-fit: fill;
+}
+
+/* -------------------- */
+/* 전체 화면*/
+/* -------------------- */
+#workspace {
+display: flex;	/*flex 컨테이너 생성*/
+flex-direction: row;	/*default value*/
+width:100%;
+padding: 10px;
+}
+
+.box {
+padding: 10px;
+}
+.box .simworld{
+flex: 4 1 auto;
+}
+.box .graph{
+flex: 6 1 auto;
+}
+
+/* -------------------- */
+/* 왼쪽 설정 창 */
+/* -------------------- */
+#simworld{
+width:400px;
+margin: 36px 24px 36px 24px;
+display: flex;
+}
+
+/* -------------------- */
+/* 탭 부분 설정 */
+/* -------------------- */
+
+/* 탭 부분 컨테이너 */
+.container{
+margin: 0 auto ;
+width: 380px;
+}
+
+/* 탭 부분 class, display-flex-row설정 */
+ul.tabs{
+margin: 0px;
+padding: 0px;
+width:380px;
+
+list-style: none;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+}
+
+/* 탭 안에 list, 글자설정 및 테두리 설정 */
+ul.tabs li{
+background: none;
+display: flex;
+padding: 9px 30.5px 5px 30.5px;
+cursor: pointer;
+
+background: #FFFFFF;
+border: 0.2px solid #055688;
+box-sizing: border-box;
+border-radius: 3px;
+border-collapse: collapse;
+
+font-family: Lato;
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 135%;
+font-feature-settings: 'pnum' on, 'lnum' on, 'ss03' on, 'liga' off;
+color: #888888;
+}
+
+/* 선택된 탭(current) 부분 설정 */
+ul.tabs li.current{
+background: #055688;
+border: 0.2px solid #055688;
+box-sizing: border-box;
+border-radius: 3px;
+border-collapse: collapse;
+font-family: Lato;
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 130%;
+
+font-feature-settings: 'pnum' on, 'lnum' on, 'ss03' on, 'liga' off;
+color: #FFFFFF;
+}
+
+/* 선택 안된 상태의 기본 탭 설정 */
+.tab-content{
+display: none;
+background: #FFFFFF;
+border: 0.5px solid #055688;
+border-collapse: collapse;
+box-sizing: border-box;
+border-radius: 4px;
+padding: 15px;
+}
+
+/* current로 설정될 시에 기존 코드 상속받게 함. */
+.tab-content.current{
+display: inherit;
+}
+
+
+/*----------------------------------*/
+/* 왼쪽 탭 안 내용 부분, 순서대로 배치*/
+/*----------------------------------*/
+
+/*----------------------------------*/
+/* 왼쪽 탭 - EXPLANATION */
+/*----------------------------------*/
+/*1. 소제목 (MODEL . INTRODUCTION)*/
+.info-subtitle {
+font-family: Inter;
+font-style: normal;
+font-weight: 600;
+font-size: 10px;
+line-height: 175%;
+/* identical to box height, or 17px */
+text-transform: uppercase;
+/* Blue Gray / 500 */
+color: #64748B;
+}
+
+/*2. 모델 이름 (Bilinear Model Test)*/
+#Headers h3{
+font-family: Inter;
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+font-style: bold;
+line-height: 175%;
+font-feature-settings: 'pnum' on, 'lnum' on, 'ss03' on, 'liga' off;
+color: #055688;
+}
+
+/*3. 모델 제목 아래 모델 설명 부분 */
+#Headers{
+font-family: Lora;
+font-style: normal;
+font-weight: normal;
+font-size: 10px;
+line-height: 175%;  
+/* or 21px */
+font-feature-settings: 'pnum' on, 'lnum' on, 'ss03' on, 'liga' off;
+
+/* Blue Gray / 500 */
+color: #515d6d; /*64748B*/
+mix-blend-mode: normal;
+}
+
+
+/*4. 부제목 부분 (State Model, Constant 등...)*/
+#simworld h4 {
+margin-top:18px;
+font-family: Inter;
+font-style: normal;
+font-weight: bold;
+font-size: 13px;
+line-height: 175%;
+font-feature-settings: 'pnum' on, 'lnum' on;
+color: #055688;
+}
+
+/*5. 부제목 아래에 소제목으로 넣고 싶은 경우 (Initials, Opions 등)*/
+#Constants h5{
+font-family: Inter;
+font-style: normal;
+font-weight: bold;
+font-size: 1px; 
+line-height: 175%;
+/* or 26px */
+
+font-feature-settings: 'pnum' on, 'lnum' on;
+color: #055688;
+}
+
+/*6. 부제목 부분 (State Model, Constant 등...) 아래 부분의 text*/
+#Constants{
+font-family: Lora;
+font-style: normal;
+font-weight: normal;
+font-size: 10px;
+line-height: 175%;  
+/* or 21px */
+font-feature-settings: 'pnum' on, 'lnum' on, 'ss03' on, 'liga' off;
+color: #515d6d;
+mix-blend-mode: normal;
+}
+
+/*----------------------------------*/
+/* 왼쪽 탭 - VARIABLE */
+/*----------------------------------*/
+/*4. 부제목 부분 (State Model, Constant 등...)*/
+#Variables h4 {
+margin-top:18px;
+font-family: Inter;
+font-style: normal;
+font-weight: bold;
+font-size: 13px;
+line-height: 175%;
+font-feature-settings: 'pnum' on, 'lnum' on;
+color: #055688;
+}
+
+/*6. 부제목 부분 (State Model, Constant 등...) 아래 부분의 text*/
+#Variables{
+font-family: Lora;
+font-style: normal;
+font-weight: normal;
+font-size: 10px;
+line-height: 175%;  
+/* or 21px */
+font-feature-settings: 'pnum' on, 'lnum' on, 'ss03' on, 'liga' off;
+color: #515d6d;
+mix-blend-mode: normal;
+}
+
+
+
+font-feature-settings: 'pnum' on, 'lnum' on;
+color: #055688;
+}
+/*변수 설명 부분*/
+#Variables{
+font-family: Lora;
+font-style: normal;
+font-weight: normal;
+font-size: 10px;
+line-height: 175%;  
+/* or 21px */
+font-feature-settings: 'pnum' on, 'lnum' on, 'ss03' on, 'liga' off;
+color: #515d6d;
+mix-blend-mode: normal;
+}
+
+/*----------------------------------*/
+/* 왼쪽 탭 - CODE */
+/*----------------------------------*/
+textarea{
+margin-top:12px;
+width: 350px;
+height: 590px;
+background: rgba(203, 213, 225, 0.3);
+border-radius: 4px;
+border: none;
+}
+
+/* -------------------- */
+/* 오른쪽 설정 창 */
+/* -------------------- */
+
+/* 오른쪽 너비 및 배치 설정 */
+#right-container{
+/* padding-left:44px; */
+/* width:600px; */
+margin: 50px 24px 36px 24px; 
+display: flex;
+flex-direction: column;
+}
+
+/* 그래프 타이틀 너비 설정 */
+.graph-title{
+display: flex;
+flex-direction: row;
+height:30px;
+align-items: center;
+}
+
+/* 그래프 타이틀 글씨 설정 */
+.graph-title #graph-title{
+margin-left:12px;
+font-family: Inter;
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 135%;
+/* or 35px */
+font-feature-settings: 'pnum' on, 'lnum' on, 'ss03' on, 'liga' off;
+/* Blue Gray / 700 */
+color: #334155;
+}
+
+/*그래프 포함하는 컨테이너 설정*/
+.graph-images{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+margin-top: 12px;
+}
+
+/*그래프 이미지 사이즈*/
+.graph-images > img{
+width: auto; height: auto;
+max-width: 600px;
+max-height: 600px;
+}
+
+/*그래프 이름*/
+.graph-images > .graph-name {
+font-family: Lora;
+font-style: normal;
+font-weight: bold;
+font-size: 18px;
+line-height: 175%;
+font-feature-settings: 'pnum' on, 'lnum' on, 'ss03' on, 'liga' off;
+margin: 10px 8px;
+}
+
+/* 그래프와 .references를 구분하는 선 */
+.under-line{
+display:flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+height:1px;
+margin-top:50px;
+}
+
+/* -----------*/
+/* 참조 부분 */
+/* -----------*/
+.references{
+margin-top:20px;
+display: flex;
+flex-direction: row;
+}
+.ref-container{
+display: flex;
+flex-direction: column;
+}
+.ref-title{
+font-family: Inter;
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 175%;
+/* identical to box height, or 31px */
+font-feature-settings: 'pnum' on, 'lnum' on, 'ss03' on, 'liga' off;
+/* Blue Gray / 700 */
+color: #334155;
+}
+.ref-link{
+font-family: Lora;
+font-style: normal;
+font-weight: 500;
+font-size: 11px;
+line-height: 18px;
+/* or 138% */
+display: flex;
+align-items: center;
+letter-spacing: -0.01em;
+/* Rectangle 3 */
+color: #1C89B7;
+/* Inside Auto Layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+margin: 0px 10px;
+}
+
+
+.link {
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+.node {
+  fill: #000;
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+.node.a { fill: #1f77b4; }
+.node.b { fill: #ff7f0e; }
+.node.c { fill: #2ca02c; }
+.node.d { fill: #00305c; }
