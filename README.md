@@ -5,7 +5,11 @@
 
 :ballot_box_with_check:html, css로 틀 및 구조 작업  
 
-:ballot_box_with_check:시뮬레이터라는 특성에 따라 깔끔하고, 논문 스타일의 차분한 톤으로 제작하였습니다.  
+:ballot_box_with_check:시뮬레이터라는 특성에 따라 깔끔하고, 논문 스타일의 차분한 톤으로 제작하였습니다.    
+  
+    
+      
+      
 
 
 
