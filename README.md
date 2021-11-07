@@ -1,11 +1,9 @@
 # MoNET-front
-### 연세대 핵의학과 Nueral Network Simulator 웹프론트 프로젝트 (2021.08 ~ 2021.09)
+### Yonsei Univ. Nueral Network Simulator Web front project (2021.08 ~ 2021.09)
 
-- figma로 ui디자인 작업  
+- UI design with figma
 
-- html, css로 틀 및 구조 작업  
-
-- 시뮬레이터라는 특성에 따라 깔끔하고, 차분한 톤으로 제작하였습니다.    
+- HTML, CSS
   
     
       
@@ -13,7 +11,7 @@
 
 
 
-### UI 화면
+### UI screenshot
 
 <img width="1440" alt="ui1" src="https://user-images.githubusercontent.com/49463954/135266385-bf785f45-ca8c-4d44-9f02-539fee0414ff.png">
 <img width="1440" alt="ui2" src="https://user-images.githubusercontent.com/49463954/135266409-045627e6-aa22-43e8-95fa-4a6c3776a148.png">
